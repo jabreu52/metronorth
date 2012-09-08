@@ -3,6 +3,7 @@ class StopTime
   belongs_to :stop
   belongs_to :trip
   
+  field :_id, type: String
   field :arrival_time, type: Float
   field :departure_time, type: Float
   field :stop_sequence, type: Integer
