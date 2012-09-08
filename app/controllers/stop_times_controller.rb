@@ -12,6 +12,7 @@ class StopTimesController < ApplicationController
     
     respond_to do |format|
       format.js
+      format.json { render json: @stop_times, callback: params[:callback] }
       format.html
     end      
   end

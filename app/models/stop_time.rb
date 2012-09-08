@@ -8,7 +8,7 @@ class StopTime
   field :stop_sequence, type: Integer
 
   def as_json(options={})
-    { id: self._id, arrival_time: self.arrival_time, departure_time: self.departure_time }
+    { id: self._id, arrival_time: self.arrival_time, departure_time: self.departure_time, stop_sequence: self.stop_sequence }
   end
 
   def stop_name(id)
