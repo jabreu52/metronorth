@@ -1,0 +1,16 @@
+.header
+	.row
+		.ten.columns.centered
+			.logo 
+				%span MetroNorth 
+				Genius
+			.select_bar
+				= text_area_tag "start_station", nil, {:class => "start_station_select", :placeholder => "Select Starting Station"}
+				= text_area_tag "destination_station", nil, {:class => "destination_station_select", :placeholder => "Select Destination"}
+			.div{style:"clear:both"}
+.start_station 1
+.destination_station
+.row
+	.ten.columns.centered
+		.schedule
+			= render partial: "table", locals: { stop_times: @stop_times }

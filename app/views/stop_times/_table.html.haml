@@ -1,0 +1,21 @@
+%table
+	- stop_times[0..15].each do |stop_time|
+		%tr
+			%td.hide-for-small
+				%b= stop_time.trip.status
+			%td.show-for-small
+				%b= stop_time.trip.responsive_status	
+			%td= stop_time.stop.name
+			- unless params[:destination_id].present?
+				%td= stop_time.trip.line_name
+			%td
+				= stop_time.departure_time_strf
+				- if stop_time.peak?
+					%span.label.right P
+			- if params[:destination_id].present?
+				%td.hide-for-small
+					%b= "Arriving to"
+				%td.show-for-small
+					%b= "to"
+				%td= stop_time.stop_name(params[:destination_id])
+				%td= stop_time.arrival_time_strf(params[:destination_id])

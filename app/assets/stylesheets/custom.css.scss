@@ -1,0 +1,21 @@
+/* Palette */
+$blue: #3A87AD;
+$yellow: #FFF9D7;
+$gold: #E2C822;
+
+body { overflow-y: scroll; }
+
+.header { background: #05A; margin-bottom: 10px; padding: 10px 0; }
+.logo { float: left; display: inline-block; font-size: 16px; color: #FFF; padding: 6px 20px 6px 7px; span { font-weight: bold; } }
+.start_station_select, .destination_station_select { width: 240px; margin-right: 10px; resize: none; }
+.start_station, .destination_station { display: none; }
+.activity-indicator { margin-top: 75px; text-align: center; span { font-weight: bold; position: relative; top: 45px; }}
+
+table { width: 100%; border: 0; text-align: left; }
+table tr th { font-size: 16px; padding: 10px; }
+.label { padding: 3px 4px 2px; position: relative; top: 1px; }
+
+/* Responsive */
+@media (max-width: 480px) {
+	.start_station_select, .destination_station_select { margin: 8px 0 5px; }
+}
