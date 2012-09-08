@@ -4,6 +4,7 @@ ruby '1.9.3'
 gem 'rails', '3.2.8'
 gem 'mongoid', git: 'git://github.com/mongoid/mongoid.git'
 gem 'bson_ext'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
