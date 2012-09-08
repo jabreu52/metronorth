@@ -5,8 +5,7 @@ production:
       options:
         skip_version_check: true
         safe: true
-  options:
-    protect_sensitive_fields: true
+        protect_sensitive_fields: false
 development:
   sessions:
     default:
@@ -35,7 +34,7 @@ development:
     # preload_models: false
 
     # Protect id and type from mass assignment. (default: true)
-    protect_sensitive_fields: true
+    protect_sensitive_fields: false
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
