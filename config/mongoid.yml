@@ -2,10 +2,10 @@ production:
   sessions:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
-    options:
-      skip_version_check: true
-      safe: true
-      protect_sensitive_fields: false
+  options:
+    skip_version_check: true
+    safe: true
+    protect_sensitive_fields: true
 development:
   # Configure available database sessions. (required)
   sessions:
@@ -47,7 +47,7 @@ development:
     # preload_models: false
 
     # Protect id and type from mass assignment. (default: true)
-    protect_sensitive_fields: false
+    protect_sensitive_fields: true
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
