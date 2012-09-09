@@ -22,15 +22,13 @@ jQuery ->
 		id = $(this).val()
 		$('.start_station').html id
 		$.getScript '/stop_times?starting_id=' + $(this).val() + '&destination_id=' + $('.destination_station').text()
-		if $('.destination_station').text() != $('.start_station').text()
-			startIndicator()	
+		startIndicator()	
 	
 	$('.destination_station_select').change () ->
 		id = $(this).val()
 		$('.destination_station').html id
 		$.getScript '/stop_times?starting_id=' + $('.start_station').text() + '&destination_id=' + $(this).val()
-		if $('.destination_station').text() != $('.start_station').text()
-			startIndicator()
+		startIndicator()
 	
 	startIndicator = ->
 		$('.schedule').html '<div class="activity-indicator"><span>Thinking...</span></div>'
