@@ -5,6 +5,7 @@ class Trip
   
   field :_id, type: Integer, default: ->{ trip_id }
   field :trip_id, type: Integer
+  field :service_id, type: Integer
   field :headsign, type: String
   field :direction, type: Integer
   

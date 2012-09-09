@@ -2,8 +2,7 @@
 	- stop_times[0..15].each do |stop_time|
 		%tr
 			%td.hide-for-small
-				%b
-					= stop_time.trip.status
+				%b= stop_time.trip.status
 			%td.show-for-small
 				%b= stop_time.trip.responsive_status	
 			%td= stop_time.stop.name
