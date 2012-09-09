@@ -9,12 +9,12 @@ class Trip
   field :headsign, type: String
   field :direction, type: Integer
   
-  def status
-    direction == 0 ? "Departing" : "Arriving"
+  def status(sid, did)
+    did.present? && did != sid ? "Departing" : direction == 0 ? "Departing" : "Arriving"
   end
   
-  def responsive_status
-    direction == 0 ? "Departs" : "Arrives"
+  def responsive_status(sid, did)
+    did.present? && did != sid ? "Departs" : direction == 0 ? "Departs" : "Arrives"
   end
   
   def line_name

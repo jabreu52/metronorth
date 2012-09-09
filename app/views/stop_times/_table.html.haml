@@ -2,17 +2,17 @@
 	- stop_times[0..15].each do |stop_time|
 		%tr
 			%td.hide-for-small
-				%b= stop_time.trip.status
+				%b= stop_time.trip.status(params[:starting_id], params[:destination_id])
 			%td.show-for-small
-				%b= stop_time.trip.responsive_status	
+				%b= stop_time.trip.responsive_status(params[:starting_id], params[:destination_id])
 			%td= stop_time.stop.name
-			- unless params[:destination_id].present?
+			- if params[:destination_id].blank? || params[:starting_id] == params[:destination_id]
 				%td= stop_time.trip.line_name
 			%td
 				= stop_time.departure_time_strf
 				- if stop_time.peak?
 					%span.label.right P
-			- if params[:destination_id].present?
+			- if params[:destination_id].present? && params[:starting_id] != params[:destination_id]
 				%td.hide-for-small
 					%b= "Arriving"
 				%td.show-for-small
