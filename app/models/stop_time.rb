@@ -3,12 +3,14 @@ class StopTime
   belongs_to :stop
   belongs_to :trip
   
+  field :_id, type: Integer, default: ->{ stop_time_id }
+  field :stop_time_id, type: Integer
   field :arrival_time, type: Float
   field :departure_time, type: Float
   field :stop_sequence, type: Integer
 
   def as_json(options={})
-    { id: self._id, arrival_time: self.arrival_time, departure_time: self.departure_time, stop_sequence: self.stop_sequence }
+    { id: self._id, stop_id: self.stop_id, trip_id: self.trip_id, arrival_time: self.arrival_time, departure_time: self.departure_time, stop_sequence: self.stop_sequence }
   end
 
   def stop_name(id)

@@ -22,14 +22,14 @@ jQuery ->
 		id = $(this).val()
 		$('.start_station').html id
 		$.getScript '/stop_times?starting_id=' + $(this).val() + '&destination_id=' + $('.destination_station').text()
-		if $('.destination_station').text().length && ($('.destination_station').text() != $('.start_station').text())
+		if $('.destination_station').text() != $('.start_station').text()
 			startIndicator()	
 	
 	$('.destination_station_select').change () ->
 		id = $(this).val()
 		$('.destination_station').html id
 		$.getScript '/stop_times?starting_id=' + $('.start_station').text() + '&destination_id=' + $(this).val()
-		if $('.start_station').text().length && ($('.destination_station').text() != $('.start_station').text())
+		if $('.destination_station').text() != $('.start_station').text()
 			startIndicator()
 	
 	startIndicator = ->

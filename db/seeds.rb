@@ -8,6 +8,7 @@ CSV.foreach('db/data/stop_times.csv', {headers: true}) do |row|
   stop_sequence = row[4].to_i
   unless StopTime.where(stop_id: stop_id, arrival_time: arrival_time, stop_sequence: stop_sequence).present?  
     StopTime.create!(
+      stop_time_id: row[7],
       stop_id: stop_id,
       trip_id: row[0],
       arrival_time: arrival_time,
