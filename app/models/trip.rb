@@ -9,7 +9,7 @@ class Trip
   field :direction, type: Integer
   
   def status
-    direction == 0 ? "Departing" : "Arriving to"
+    direction == 0 ? "Departing" : "Arriving"
   end
   
   def responsive_status
