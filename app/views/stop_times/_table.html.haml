@@ -3,8 +3,9 @@
 		%tr
 			%td.hide-for-small
 				%b= stop_time.trip.status(params[:starting_id], params[:destination_id])
-			%td.show-for-small
-				%b= stop_time.trip.responsive_status(params[:starting_id], params[:destination_id])
+			- if params[:destination_id].blank?
+				%td.show-for-small
+					%b= stop_time.trip.responsive_status
 			%td= stop_time.stop.name
 			- if params[:destination_id].blank? || params[:starting_id] == params[:destination_id]
 				%td= stop_time.trip.line_name

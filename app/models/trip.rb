@@ -13,8 +13,8 @@ class Trip
     did.present? && did != sid ? "Departing" : direction == 0 ? "Departing" : "Arriving"
   end
   
-  def responsive_status(sid, did)
-    did.present? && did != sid ? "Departs" : direction == 0 ? "Departs" : "Arrives"
+  def responsive_status
+    direction == 0 ? "D" : "A"
   end
   
   def line_name
