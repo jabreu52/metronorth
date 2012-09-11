@@ -9,7 +9,7 @@ class StopTimesController < ApplicationController
     elsif Time.now.monday?
       t = Trip.in(service_id: [1,2])
     elsif Time.now.tuesday? || Time.now.wednesday? || Time.now.thursday?
-      t = Trip.where(service_id: 1)  
+      t = Trip.in(service_id: [1])  
     elsif Time.now.friday?
       t = Trip.in(service_id: [1,6])
     elsif Time.now.saturday?

@@ -18,17 +18,17 @@ class StopTime
   end
     
   def arrival_time_strf(id)
-    time = StopTime.find_by(stop_id: id, trip_id: trip_id).arrival_time
+    time = StopTime.find_by(stop_id: id, trip_id: trip_id).arrival_time.hours
   	Time.at(time).strftime("%l:%M%P")
   end  
 
   def departure_time_strf
-    Time.at(departure_time).strftime("%l:%M%P")
+    Time.at(departure_time.hours).strftime("%l:%M%P")
   end 
   
   def peak?
     if stop_id = 1 || stop_id = 4
-      arrival_hour = Time.at(arrival_time).hour
+      arrival_hour = Time.at(arrival_time.hours).hour
       ((5..10).member?(arrival_hour) && trip.direction == 1) || 
       ((5..9).member?(arrival_hour) && trip.direction == 0) ||
       ((16..20).member?(arrival_hour) && trip.direction == 0)
