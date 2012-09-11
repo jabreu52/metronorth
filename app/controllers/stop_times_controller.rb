@@ -20,7 +20,8 @@ class StopTimesController < ApplicationController
       @stop_times = StopTime.where(stop_id: sid.to_i).in(trip_id: trips.map(&:id)).gte(arrival_time: Time.now.to_i).asc(:arrival_time)
     else
       id = sid.present? ? sid.to_i : 1
-      @stop_times = StopTime.where(stop_id: id).in(trip_id: t.map(&:id)).gte(arrival_time: Time.now.to_i)#.asc(:arrival_time)
+      current_time = (Time.now.hour * 60) + Time.now.min
+      @stop_times = StopTime.where(stop_id: id).in(trip_id: t.map(&:id)).gte(arrival_time: current_time).asc(:arrival_time)
     end
     
     respond_to do |format|
