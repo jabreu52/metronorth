@@ -2,8 +2,8 @@ class StopTimesController < ApplicationController
   def index
     sid = params[:starting_id] if params[:starting_id]
     did = params[:destination_id] if params[:destination_id]
-    current_time = (Time.now.hour * 60) + Time.now.min
-    
+    current_time = Time.at(0) + (Time.now.hour).hours + (Time.now.min).minutes
+
     if Time.now.sunday?
       t = Trip.in(service_id: [2,3,6])
     elsif Time.now.monday?

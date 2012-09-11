@@ -4,9 +4,9 @@ puts "Add Stop Times"
 CSV.foreach('db/data/stop_times.csv', {headers: true}) do |row|
   stop_id = row[3]
   a_time = Chronic.parse(row[1].length < 8 ? "0#{row[1]}" : row[1])
-  arrival_time =  Time.at(0) + (a_time.hour).hours + (a_time.min).minutes
+  arrival_time =  (Time.at(0) + (a_time.hour).hours + (a_time.min).minutes).to_i
   d_time = Chronic.parse(row[2].length < 8 ? "0#{row[2]}" : row[2])
-  departure_time =  Time.at(0) + (d_time.hour).hours + (d_time.min).minutes
+  departure_time =  (Time.at(0) + (d_time.hour).hours + (d_time.min).minutes).to_i
   stop_sequence = row[4].to_i 
   StopTime.create!(
     stop_time_id: row[7],
