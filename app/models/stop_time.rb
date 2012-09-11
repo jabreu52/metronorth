@@ -28,7 +28,7 @@ class StopTime
   
   def peak?
     if stop_id = 1 || stop_id = 4
-      arrival_hour = Time.at(arrival_time.hours).hour
+      arrival_hour = Time.at(arrival_time).hour
       ((5..10).member?(arrival_hour) && trip.direction == 1) || 
       ((5..9).member?(arrival_hour) && trip.direction == 0) ||
       ((16..20).member?(arrival_hour) && trip.direction == 0)
