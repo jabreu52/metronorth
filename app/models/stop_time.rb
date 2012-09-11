@@ -18,12 +18,12 @@ class StopTime
   end
     
   def arrival_time_strf(id)
-    time = StopTime.find_by(stop_id: id, trip_id: trip_id).arrival_time.hours
+    time = StopTime.find_by(stop_id: id, trip_id: trip_id).arrival_time
   	Time.at(time).strftime("%l:%M%P")
   end  
 
   def departure_time_strf
-    Time.at(departure_time.hours).strftime("%l:%M%P")
+    Time.at(departure_time).strftime("%l:%M%P")
   end 
   
   def peak?
