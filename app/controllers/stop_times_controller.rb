@@ -8,7 +8,7 @@ class StopTimesController < ApplicationController
     elsif Time.now.monday?
       t = Trip.in(service_id: [1,2])
     elsif Time.now.tuesday? || Time.now.wednesday? || Time.now.thursday?
-      t = Trip.in(service_id: [1])  
+      t = Trip.where(service_id: 1)  
     elsif Time.now.friday?
       t = Trip.in(service_id: [1,6])
     elsif Time.now.saturday?
@@ -20,7 +20,7 @@ class StopTimesController < ApplicationController
       @stop_times = StopTime.where(stop_id: sid.to_i).in(trip_id: trips.map(&:id)).gte(arrival_time: Time.now.to_i).asc(:arrival_time)
     else
       id = sid.present? ? sid.to_i : 1
-      @stop_times = StopTime.where(stop_id: id).in(trip_id: t.map(&:id)).gte(arrival_time: Time.now.to_i).asc(:arrival_time)
+      @stop_times = StopTime.where(stop_id: id).in(trip_id: t.map(&:id)).gte(arrival_time: Time.now.to_i)#.asc(:arrival_time)
     end
     
     respond_to do |format|

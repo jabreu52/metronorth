@@ -3,10 +3,11 @@ require 'csv'
 puts "Add Stop Times"
 CSV.foreach('db/data/stop_times.csv', {headers: true}) do |row|
   stop_id = row[3]
-  arrival_time = Chronic.parse(row[1].length < 8 ? "0#{row[1]}" : row[1]).to_i
-  departure_time = Chronic.parse(row[2].length < 8 ? "0#{row[2]}" : row[2]).to_i
-  stop_sequence = row[4].to_i
-  #unless StopTime.where(stop_id: stop_id, arrival_time: arrival_time, stop_sequence: stop_sequence).present?  
+  a_time = Chronic.parse(row[1].length < 8 ? "0#{row[1]}" : row[1])
+  arrival_time = (a_time.hour * 60) + a_time.min 
+  d_time = Chronic.parse(row[2].length < 8 ? "0#{row[2]}" : row[2])
+  departure_time = (d_time.hour * 60) + d_time.min 
+  stop_sequence = row[4].to_i 
   StopTime.create!(
     stop_time_id: row[7],
     stop_id: stop_id,
@@ -15,7 +16,6 @@ CSV.foreach('db/data/stop_times.csv', {headers: true}) do |row|
     departure_time: departure_time,
     stop_sequence: stop_sequence
   )
- #end
 end
 
 puts "Add Stops"
